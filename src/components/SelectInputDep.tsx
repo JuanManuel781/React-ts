@@ -20,10 +20,10 @@ const SelectInputDep: React.FC<props> = ({ cargaInicial, onSelectedIndexChanged1
     };
     return (
         <div>
-            <h2>Lista Departamentos</h2>
+            <h5>Lista Departamentos</h5>
             <hr />
-            <select name="list" id="list" onChange={handleChange}>
-                <option>seleccione</option>
+            <select className="form-select" aria-label="Default select example" name="list" id="list" onChange={handleChange}>
+                <option>SELECCIONE DEPARTAMENTO</option>
                 {cargaInicial.map((item, index) => {
                     return (
                         <option key={index} value={item.id}>

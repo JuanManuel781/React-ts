@@ -1,4 +1,3 @@
-import React, { useMemo } from 'react'
 
 interface props {
     cargaInicial:ListProps[];
@@ -27,10 +26,10 @@ const SelectInputMun:React.FC<props> = ({cargaInicial,id_depa}) => {
     }
     return (
         <div>
-          <h2>Lista Municipios</h2>
+          <h5>Lista Municipios</h5>
           <hr />
-          <select name="list" id="list">
-            <option>seleccione</option>
+          <select className="form-select" aria-label="Default select example" name="list" id="list">
+            <option>SELECCIONE MUNICIPIO</option>
            {municipios()?.map((item, dos) => (
                   <option key={dos} value={item}>
                     {item}

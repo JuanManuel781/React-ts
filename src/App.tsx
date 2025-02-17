@@ -4,10 +4,8 @@ import InputSelect from "./components/SelectInput";
 
 import "./App.css";
 import SelectInputDep from "./components/SelectInputDep";
-import Data from './components/Data.json'
+import Data from "./components/Data.json";
 import SelectInputMun from "./components/SelectInputMun";
-
-
 
 function App() {
   const Autos = ["Audi", "BMW", "Mercedes"];
@@ -17,7 +15,6 @@ function App() {
   const [lista, setLista] = useState<string[]>(Autos);
   const [dep, setdep] = useState<number>(0);
   const listaInicial = ["Autos", "Animales", "Futbol"];
-
 
   const onHandleSelectedIndexChanged = (index: number) => {
     // Dependiendo del indice va a escoger que lista debe cargar en el segundo dropDown list
@@ -42,9 +39,9 @@ function App() {
   };
 
   const onSelectedIndexChanged1 = (index: number) => {
-    console.log('llega', index);
-    setdep(index)
-  }
+    console.log("llega", index);
+    setdep(index);
+  };
   console.log(dep);
   return (
     <>
@@ -59,9 +56,26 @@ function App() {
         onSelectedIndexChanged={(index: any) => console.log(index)}
       />
 
-      <div id="container">
-        <div id="item"><SelectInputDep cargaInicial={Data} onSelectedIndexChanged1={onSelectedIndexChanged1} /></div>
-        <div id="item"> <SelectInputMun cargaInicial={Data} id_depa={dep}></SelectInputMun></div>
+      <div className="container text-center ">
+        <div className="row align-items-center">
+          <div className="col">
+            <div id="item">
+              <SelectInputDep
+                cargaInicial={Data}
+                onSelectedIndexChanged1={onSelectedIndexChanged1}
+              />
+            </div>
+          </div>
+          <div className="col">
+            <div id="item">
+              {" "}
+              <SelectInputMun
+                cargaInicial={Data}
+                id_depa={dep}
+              ></SelectInputMun>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
