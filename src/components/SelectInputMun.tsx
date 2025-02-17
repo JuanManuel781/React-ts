@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 interface props {
     cargaInicial:ListProps[];
@@ -14,23 +14,28 @@ type ListProps = {
 
 const SelectInputMun:React.FC<props> = ({cargaInicial,id_depa}) => {
     console.log('cargaInicial',cargaInicial,'id_depa',id_depa);
+
+    /* const municipios = useMemo(()=>{
+        const dep =cargaInicial.find((el)=>el.id===id_depa);
+        return dep?.municipios || [];
+    },[id_depa,cargaInicial])
+ */
+
+    const municipios = ()=>{
+        const dep =cargaInicial.find((el)=>el.id===id_depa);
+        return dep?.municipios ;
+    }
     return (
         <div>
           <h2>Lista Municipios</h2>
           <hr />
           <select name="list" id="list">
             <option>seleccione</option>
-            {cargaInicial.map((e) => {
-              if (e.id === id_depa) {
-                // Si el ID del departamento coincide, mapeamos los municipios
-                return e.municipios.map((item, dos) => (
+           {municipios()?.map((item, dos) => (
                   <option key={dos} value={item}>
                     {item}
                   </option>
-                ));
-              }
-              return null; // Si no coincide, devolvemos null (sin opciones)
-            })}
+                ))}  
           </select>
         </div>
       );
